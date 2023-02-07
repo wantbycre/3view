@@ -207,7 +207,7 @@ function getChart(){
 							beginAtZero: true,
 							minRotation: 360,
 							stepSize: 1000,
-							maxTicksLimit: 10			
+							maxTicksLimit: 10
 						},
 						display: true,
 					},
@@ -226,7 +226,7 @@ function getChart(){
 			}
 		});
 
-		
+
 		if(channelOption[arrNum].active == 0){
 			$("#graphBox"+channelOption[arrNum].channel).css("display","none");
 		}
@@ -266,7 +266,7 @@ function getSocket(){
 			var data = JSON.parse(res);
 			var sensorData = data.DATA;
 			var channel = data.CHANNEL;
-			
+
 			if(data.STATUS == "02"){
 				$("#mnmtError").css("display", "none");
 				$("#output3").removeClass("output-error");
@@ -281,7 +281,7 @@ function getSocket(){
 				$("#output3").addClass("output-error");
 				$("#graphTitle"+channel).addClass("error-top2");
 			}
-			
+
 			//currentData = sensorData.slice(mvData[actNum].min, Number(mvData[actNum].max)+1);
 			peak = Math.max.apply(null, sensorData);
 			$("#peak"+channel).text(peak);
@@ -325,7 +325,7 @@ function getStart(){
 			getSocket();
 		}else{
             alert(result.message);
-        } 
+        }
 	}).fail(function(result, textStatus, errorThrown){
 	  if(result.status == 403){
 			alert(result);
@@ -337,7 +337,7 @@ function getStart(){
 };
 
 function getSetting(){
-	
+
 	$.ajax({
 	  type    : "POST",
 	  url        : domain+"/api/sensor/setting",
@@ -393,7 +393,7 @@ function getSetting(){
 			localStorage.setItem("mvData", JSON.stringify(mvData));
 		}else{
             alert(result.message);
-        } 
+        }
 	}).fail(function(result, textStatus, errorThrown){
 	  if(result.status == 403){
 			alert(result);
@@ -423,11 +423,11 @@ function getStts(){
 		if(result.status == 200){
 			var jsonResult = result.data;
 			console.log(result);
-			
+
 			for(var i in jsonResult){
 				if(jsonResult[i].length != 0){
 					var channel = jsonResult[i].CHANNEL;
-					
+
 					var sensorData = jsonResult[i].DATA;
 					var arrNum = Number(channel)+1;
 
@@ -436,13 +436,13 @@ function getStts(){
 					//currentData = sensorData.slice(mvData[c].min, Number(mvData[actNum].max)+1);
 					chart[channel].data.datasets[0].data = sensorData;
 					chart[channel].update();
-					
+
 					if(jsonResult[i].STATUS == '03'){
 						$("#allowableError").css("display", "flex");
 						$("#output2").addClass("output-error");
 						$("#graphTitle"+channel).addClass("error-top");
 					}else if(jsonResult[i].STATUS == '04'){
-						if ($("#allowableError").css("display") != "flex") { 
+						if ($("#allowableError").css("display") != "flex") {
 							$("#mnmtError").css("display", "flex");
 							$("#output3").addClass("output-error");
 							$("#graphTitle"+channel).addClass("error-top2");
@@ -486,7 +486,7 @@ function setChannel(){
 
 		localStorage.setItem("channelOption", JSON.stringify(channelOption));
 		channelOption = JSON.parse(localStorage.getItem("channelOption"));
-		
+
 		var actLeng = 0; //활성화 그래프 갯수
 		var lastChartNum = 0;
 		for(var i in channelOption){
@@ -495,8 +495,8 @@ function setChannel(){
 				lastChartNum = channelOption[i].channel;
 			}
 		}
-		
-	
+
+
 		if(actLeng == 7){
 			$("#graphUl li:nth-child("+lastChartNum+")").css("width","868px");
 			$("#graphUl li:nth-child("+lastChartNum+") .main-canvas").css("width","868px");

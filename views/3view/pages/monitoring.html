@@ -181,92 +181,8 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="footer">
-		<ul class="footer-ul">
-			<li>
-				<img src="../images/main_icon01.png">
-				<span class="footer-image-label">이력</span>
-			</li>
-			<li>
-				<img src="../images/MONITORING_BACK_ON.png">
-				<span class="footer-image-label color-185489">모니터링</span>
-			</li>
-			<li>
-				<img src="../images/main_icon03.png">
-				<span class="footer-image-label">금형</span>
-			</li>
-			<li>
-				<img src="../images/main_icon04.png">
-				<span class="footer-image-label">시스템</span>
-			</li>
-			<li class="footer-status-label">
-				<span class="footer-status-txt">
-					<span class="footer-status-txt1">INPUT</span>
-					<span class="footer-status-txt1">1</span>
-					<span class="footer-status-txt1">2</span>
-					<span class="footer-status-txt1">3</span>
-					<span class="footer-status-txt1">4</span>
-					<span class="footer-status-txt1">OUTPUT</span>
-					<span class="footer-status-txt1">1</span>
-					<span class="footer-status-txt1">2</span>
-					<span class="footer-status-txt1">3</span>
-					<span class="footer-status-txt1">4</span>
-				</span>
-			</li>
-		</ul>
-	</div>
-	<div class="right-menu">
-		<ul class="right-ul">
-			<li>
-				<img src="../images/main_icon05.png">
-				<span class="right-title-txt">압조력</span>
-			</li>
-			<li>
-				<img src="../images/main_icon06.png">
-				<span class="right-title-txt">피크</span>
-			</li>
-			<li>
-				<img src="../images/main_icon07.png">
-				<span class="right-title-txt">SPOP</span>
-			</li>
-			<li>
-				<img src="../images/main_icon08.png">
-				<span class="right-title-txt1">생산제품</span>
-				<span class="right-title-txt2">56,029</span>
-			</li>
-			<li>
-				<img src="../images/main_icon08.png">
-				<span class="right-title-txt1">제품생산량</span>
-				<span class="right-title-txt2">56,029</span>
-			</li>
-			<li>
-				<img src="../images/main_icon08.png">
-				<span class="right-title-txt1">일일생산량</span>
-				<span class="right-title-txt2">56,029</span>
-			</li>
-			<li>
-				<img src="../images/main_icon09.png">
-				<span class="right-title-txt1">생산목표</span>
-				<span class="right-title-txt2">10</span>
-				<span class="right-title-txt3">0%</span>
-				<span class="right-title-txt4">
-					<img src="../images/clock.png" class="clock-icon"> 00:00:00
-				</span>
-				<div class="right-bar-graph">
-					<p class="position:relative;">
-						<span class="right-bar-gauge"></span>
-					</p>
-				</div>
-			</li>
-			<li class="right-spm">
-				<span>0</span> [SPM]
-			</li>
-			<li>
-				<img src="../images/main_icon10.png">
-				<span class="right-title-txt">학 습</span>
-			</li>
-		</ul>
-	</div>
+	<div class="footer"></div>
+	<div class="right-menu"></div>
 	<!--
 	<div class="right-menu">
 		<div class="right-btn active-btn"><object data="../images/graph.svg" class="active-img" style="fill:white"></object><br>압조력</div>
@@ -299,7 +215,10 @@
 	-->
 </div>
 
-
+<script>
+    $(".right-menu").load("../include/right-menu.html");
+    $(".footer").load("../include/footer-ul.html");
+</script>
 <script src="../js/monitoring.js"></script>
 </body>
 </html>

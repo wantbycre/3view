@@ -11,14 +11,14 @@ var graphLd = false;
 var mvData = [];
 //channel: 1단,2단.... / min: 모니터링각도 최소단위 / max: 모니터링각도 최대단위 / allowable: 허용오차 / mnmt: 관리오차 / lower: 하한값 / condition: 조건값 / rpsvs: 검출민감도 / part1: 부분오차1 / partMin1: 부분오차 최소범위 / partMax1: 부분오차 최대범위
 var sampleData = [
-	{"channel": 1, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
-	{"channel": 2, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
-	{"channel": 3, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
-	{"channel": 4, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
-	{"channel": 5, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
-	{"channel": 6, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
-	{"channel": 7, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
-	{"channel": 8, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 0, "partMin1": 0, "partMax1": 360, "part2": 0, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false}
+	{"channel": 1, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
+	{"channel": 2, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
+	{"channel": 3, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
+	{"channel": 4, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
+	{"channel": 5, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
+	{"channel": 6, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
+	{"channel": 7, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false},
+	{"channel": 8, "min": 0, "max": 360, "allowable": 20, "mnmt": 50, "lower": 0, "condition": 0, "rpsvs": 0, "part1": 50, "partMin1": 0, "partMax1": 360, "part2": 50, "partMin2": 0, "partMax2": 360, "partToggle1": false, "partToggle2": false}
 ];
 
 var defaultData = [
