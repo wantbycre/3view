@@ -1,0 +1,267 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, maximum-scale=1">
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="all" />
+	<link href="../css/common.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	<script src="../js/chart.js"></script>
+	<script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+</head>
+<body>
+<div class="wrap bg-c0c0c0">
+	<div class="detail-content">
+		<div class="detail-top">
+			<ul class="detail-top-ul">
+				<li><img src="../images/left_arrow.png" onclick="changeCnl('minus');"></li>
+				<li class="detail-top-level" id="topLevel"><span id="channel"></span> 단</li>
+				<li><img src="../images/right_arrow.png" onclick="changeCnl('plus');"></li>
+				<li class="back-btn">
+					<a href="./main.html"><img src="../images/back_btn.png"></a>
+				</li>
+			</ul>
+		</div>
+		<div class="detail-graph">
+			<div class="pq-box">
+				<p class="pq-title">PQ</p>
+				<img src="../images/pq_bar.png">
+				<span class="pq-max">10</span>
+				<span class="pq-min">0</span>
+				<div class="pg-act-box">
+					<span class="pq-act" id="pqAct">
+						<span id="pqData" class="pq-value">0.0</span>
+						<span class="pq-line"></span>
+					</span>
+				</div>
+			</div>
+			<div class="detail-graph-box">
+				  <canvas id="canvas1" class="detail-canvas" style="width:456px;height:360px;"></canvas>
+				  <div class="peak" id="peak"></div>
+				  <div class="part1-start-line" id="partStart1"></div>
+				  <div class="part1-end-line" id="partEnd1"></div>
+				  <div class="part1-start-line" id="partStart2"></div>
+				  <div class="part1-end-line" id="partEnd2"></div>
+			</div>
+			<input id="graphMin" name="시작각도" min="20" max="290" onclick="numKey(this);" class="detail-x-min" value="0" readonly>
+			<input id="graphMax" name="끝각도" min="30" max="360" onclick="numKey(this);" class="detail-x-max" value="360" readonly>
+		</div>
+		<div class="detail-option">
+			<ul class="detail-option-ul">
+				<li>
+					<p class="detail-option-title">허용오차</p>
+					<ul class="errors-ul">
+						<li><img src="../images/arrow_down.png" class="detail-arrow-img" name="allowable" onclick="valueDown(this);"></li>
+						<li><input id="allowable" type="text" class="detail-input" min="0" max="50"  name="허용오차" onclick="numKey(this);" readonly></li>
+						<li><img src="../images/arrow_up.png" class="detail-arrow-img" name="allowable" onclick="valueUp(this);"></li>
+					</ul>
+				</li>
+				<li>
+					<div class="detail-option-title2">관리오차 <input id="mnmt" type="text" class="detail-input float-right" min="0" max="90" name="관리오차" onclick="numKey(this);" readonly></div>
+				</li>
+				<li>
+					<div class="detail-option-title2">검출 민감도 <input id="rpsvs" type="text" class="detail-input float-right" min="0" max="5" name="검출 민감도" onclick="numKey(this);" readonly></div>
+				</li>
+				<li>
+					<div class="detail-option-title2">하한값 <input type="text" id="lower" class="detail-input float-right" min="0" max="90" name="하한값" onclick="numKey(this);"  readonly></div>
+				</li>
+				<li>
+					<div class="detail-option-title2">조건값 <input type="text" id="condition" class="detail-input float-right" min="0" max="90" name="조건값" onclick="numKey(this);" readonly></div>
+				</li>
+				<li>
+					<div class="detail-option-title2">유연성 <input type="text" class="detail-input float-right" min="0" max="5" name="유연성" onclick="numKey(this);" value="0" readonly></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="detail-division">
+		<ul class="detail-division-ul">
+			<li class="detail-div-toggle">
+				<p>부분영역1</p>
+				<p><img src="../images/OFF_ICON.png" id="divToggleBtn1"></p>
+			</li>
+			<li class="detail-div-range division-bg1">
+				<div class="division1">
+					<div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+
+					<div class="slider-input-box">
+					  <input type="number" id="partMin1" class="price-range-field range1-min" readonly />
+					  <input type="number" id="partMax1" class="price-range-field range1-max" readonly />
+					</div>
+				</div>
+			</li>
+			<li class="division-bg1">
+				<ul class="errors-ul erros-ul2">
+					<li><img src="../images/arrow_down.png" class="detail-arrow-img" name="part1" onclick="valueDown(this)"></li>
+					<li><input id="part1" type="text" class="detail-input" min="1" max="50" name="허용오차" onclick="numKey(this);" value="20" readonly></li>
+					<li><img src="../images/arrow_up.png" class="detail-arrow-img" name="part1" onclick="valueUp(this)"></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="detail-division">
+		<ul class="detail-division-ul">
+			<li class="detail-div-toggle">
+				<p>부분영역2</p>
+				<p><img src="../images/OFF_ICON.png" id="divToggleBtn2"></p>
+			</li>
+			<li class="detail-div-range division-bg2">
+				<div id="slider-range2" class="price-filter-range" name="rangeInput"></div>
+
+				<div class="slider-input-box">
+				  <input type="number" id="partMin2" class="price-range-field range1-min" readonly />
+				  <input type="number" id="partMax2" class="price-range-field range1-max" readonly />
+				</div>
+			</li>
+			<li class="division-bg2">
+				<ul class="errors-ul erros-ul2">
+					<li><img src="../images/arrow_down.png" class="detail-arrow-img" name="part2" onclick="valueDown(this)"></li>
+					<li><input id="part2" type="text" class="detail-input" min="1" max="50" name="허용오차" onclick="numKey(this);" value="20" readonly></li>
+					<li><img src="../images/arrow_up.png" class="detail-arrow-img" name="part2" onclick="valueUp(this)"></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="footer">
+		<ul class="footer-ul">
+			<li>
+				<img src="../images/main_icon01.png">
+				<span class="footer-image-label">이력</span>
+			</li>
+			<li>
+				<a href="./monitoring.html">
+					<img src="../images/main_icon02.png">
+					<span class="footer-image-label">모니터링</span>
+				</a>
+			</li>
+			<li>
+				<img src="../images/main_icon03.png">
+				<span class="footer-image-label">금형</span>
+			</li>
+			<li>
+				<img src="../images/main_icon04.png">
+				<span class="footer-image-label">시스템</span>
+			</li>
+			<li class="footer-status-label">
+				<div class="error-wrap">
+					<div class="error-box" id="allowableError">
+						<img src="../images/ICON_INFO_TOLERANCE.png">
+						<span class="error-msg">허용오차 초과</span>
+					</div>
+					<div class="error-box" id="mnmtError">
+						<img src="../images/ICON_INFO_TOLERANCE.png">
+						<span class="error-msg">관리오차 초과</span>
+					</div>
+				</div>
+				<span class="footer-status-txt">
+					<span class="footer-status-txt1">INPUT</span>
+					<span class="footer-status-txt1">1</span>
+					<span class="footer-status-txt1">2</span>
+					<span class="footer-status-txt1">3</span>
+					<span class="footer-status-txt1">4</span>
+					<span class="footer-status-txt1">OUTPUT</span>
+					<span class="footer-status-txt1" id="output1">1</span>
+					<span class="footer-status-txt1" id="output2">2</span>
+					<span class="footer-status-txt1" id="output3">3</span>
+					<span class="footer-status-txt1" id="output4">4</span>
+					<span class="footer-status-txt1" id="output5">5</span>
+					<span class="footer-status-txt1" id="output6">6</span>
+				</span>
+			</li>
+		</ul>
+	</div>
+	<div class="right-menu">
+		<ul class="right-ul">
+			<li>
+				<img src="../images/main_icon05.png">
+				<span class="right-title-txt">압조력</span>
+			</li>
+			<li>
+				<img src="../images/main_icon06.png">
+				<span class="right-title-txt">피크</span>
+			</li>
+			<li>
+				<img src="../images/main_icon07.png">
+				<span class="right-title-txt">SPOP</span>
+			</li>
+			<li>
+				<img src="../images/main_icon08.png">
+				<span class="right-title-txt1">생산제품</span>
+				<span class="right-title-txt2">56,029</span>
+			</li>
+			<li>
+				<img src="../images/main_icon08.png">
+				<span class="right-title-txt1">제품생산량</span>
+				<span class="right-title-txt2">56,029</span>
+			</li>
+			<li>
+				<img src="../images/main_icon08.png">
+				<span class="right-title-txt1">일일생산량</span>
+				<span class="right-title-txt2">56,029</span>
+			</li>
+			<li>
+				<img src="../images/main_icon09.png">
+				<span class="right-title-txt1">생산목표</span>
+				<span class="right-title-txt2">10</span>
+				<span class="right-title-txt3">0%</span>
+				<span class="right-title-txt4">
+					<img src="../images/clock.png" class="clock-icon"> 00:00:00
+				</span>
+				<div class="right-bar-graph">
+					<p class="position:relative;">
+						<span class="right-bar-gauge"></span>
+					</p>
+				</div>
+			</li>
+			<li class="right-spm">
+				<span>0</span> [SPM]
+			</li>
+			<li onclick="getStart();">
+				<img src="../images/main_icon10.png">
+				<span class="right-title-txt">학 습</span>
+			</li>
+		</ul>
+	</div>
+	<div class="div-cover1" id="divCover1" style="position:absolute;top:490px;left:155px;background-color:rgba(0,0,255,0);width:720px;height:90px;z-index:10;"></div>
+	<div class="div-cover1" id="divCover2" style="position:absolute;top:585px;left:155px;background-color:rgba(0,0,255,0);width:720px;height:90px;z-index:10;"></div>
+</div>
+<div class="modal keyboard-num" id="numberKey">
+	<p class="keyboard-title" id="numKeyTitle"></p>
+	<div class="keyboard-input-box">
+		<input type="text" class="keyboard-input" id="numKeyInput" readonly>
+		<p class="keyboard-num-info"> Min/Max : <span id="numMin"></span> ~ <span id="numMax"></span></p>
+	</div>
+	<table cellspacing="0" cellpadding="0" border="0" class="keyboard-num-table" id="numKeyTable">
+		<tr>
+			<td><img src="../images/ICON_NUM7_OFF.png" name="7"></td>
+			<td><img src="../images/ICON_NUM8_OFF.png" name="8"></td>
+			<td><img src="../images/ICON_NUM9_OFF.png" name="9"></td>
+		</tr>
+		<tr>
+			<td><img src="../images/ICON_NUM4_OFF.png" name="4"></td>
+			<td><img src="../images/ICON_NUM5_OFF.png" name="5"></td>
+			<td><img src="../images/ICON_NUM6_OFF.png" name="6"></td>
+		</tr>
+		<tr>
+			<td><img src="../images/ICON_NUM1_OFF.png" name="1"></td>
+			<td><img src="../images/ICON_NUM2_OFF.png" name="2"></td>
+			<td><img src="../images/ICON_NUM3_OFF.png" name="3"></td>
+		</tr>
+		<tr>
+			<td><img src="../images/ICON_O_OFF.png" name="0"></td>
+			<td></td>
+			<td><img src="../images/ICON_BACK_DELETE_OFF.png" name="backSpace"></td>
+		</tr>
+	</table>
+	<p class="keyboard-num-btn">
+		<img src="../images/OK_BUTTON_BACK.png" onclick="insertNum();">
+		<img src="../images/CANCEL_BUTTON_BACK.png" onclick="closeModal();">
+	</p>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/keyboard.js"></script>
+<script src="../js/detail.js"></script>
+
+</body>
+</html>

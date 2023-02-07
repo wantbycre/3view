@@ -1,0 +1,188 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, maximum-scale=1" />
+    <link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="all" />
+    <link href="../css/common.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="../js/chart.js"></script>
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+</head>
+<body>
+    <div class="wrap bg-c0c0c0">
+        <div class="detail-content">
+            <div class="detail-top">
+                <ul class="detail-top-ul">
+                    <li>
+                        <img src="../images/left_arrow.png" onclick="changeCnl('minus');" />
+                    </li>
+                    <li class="detail-top-level" id="topLevel">
+                        <span id="channel"></span> 단
+                    </li>
+                    <li>
+                        <img src="../images/right_arrow.png" onclick="changeCnl('plus');" />
+                    </li>
+                    <li class="back-btn">
+                        <a href="./main.html"><img src="../images/back_btn.png" /></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="peak-graph">
+                <div class="peak-graph-content">
+                    여기 그래프 width:869px;height:?
+                </div>
+                <div class="peak-graph-util">
+                    <ul>
+                        <li>
+                            시간 범위
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="peak-graph-detail">
+            `1
+        </div>
+        <div class="footer">
+            <ul class="footer-ul">
+                <li>
+                    <img src="../images/main_icon01.png" />
+                    <span class="footer-image-label">이력</span>
+                </li>
+                <li>
+                    <a href="./monitoring.html">
+                        <img src="../images/main_icon02.png" />
+                        <span class="footer-image-label">모니터링</span>
+                    </a>
+                </li>
+                <li>
+                    <img src="../images/main_icon03.png" />
+                    <span class="footer-image-label">금형</span>
+                </li>
+                <li>
+                    <img src="../images/main_icon04.png" />
+                    <span class="footer-image-label">시스템</span>
+                </li>
+                <li class="footer-status-label">
+                    <div class="error-wrap">
+                        <div class="error-box" id="allowableError">
+                            <img src="../images/ICON_INFO_TOLERANCE.png" />
+                            <span class="error-msg">허용오차 초과</span>
+                        </div>
+                        <div class="error-box" id="mnmtError">
+                            <img src="../images/ICON_INFO_TOLERANCE.png" />
+                            <span class="error-msg">관리오차 초과</span>
+                        </div>
+                    </div>
+                    <span class="footer-status-txt">
+                        <span class="footer-status-txt1">INPUT</span>
+                        <span class="footer-status-txt1">1</span>
+                        <span class="footer-status-txt1">2</span>
+                        <span class="footer-status-txt1">3</span>
+                        <span class="footer-status-txt1">4</span>
+                        <span class="footer-status-txt1">OUTPUT</span>
+                        <span class="footer-status-txt1" id="output1">1</span>
+                        <span class="footer-status-txt1" id="output2">2</span>
+                        <span class="footer-status-txt1" id="output3">3</span>
+                        <span class="footer-status-txt1" id="output4">4</span>
+                        <span class="footer-status-txt1" id="output5">5</span>
+                        <span class="footer-status-txt1" id="output6">6</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="right-menu">
+            <ul class="right-ul">
+                <li>
+                    <img src="../images/main_icon05.png" />
+                    <span class="right-title-txt">압조력</span>
+                </li>
+                <li>
+                    <img src="../images/main_icon06.png" />
+                    <span class="right-title-txt">피크</span>
+                </li>
+                <li>
+                    <img src="../images/main_icon07.png" />
+                    <span class="right-title-txt">SPOP</span>
+                </li>
+                <li>
+                    <img src="../images/main_icon08.png" />
+                    <span class="right-title-txt1">생산제품</span>
+                    <span class="right-title-txt2">56,029</span>
+                </li>
+                <li>
+                    <img src="../images/main_icon08.png" />
+                    <span class="right-title-txt1">제품생산량</span>
+                    <span class="right-title-txt2">56,029</span>
+                </li>
+                <li>
+                    <img src="../images/main_icon08.png" />
+                    <span class="right-title-txt1">일일생산량</span>
+                    <span class="right-title-txt2">56,029</span>
+                </li>
+                <li>
+                    <img src="../images/main_icon09.png" />
+                    <span class="right-title-txt1">생산목표</span>
+                    <span class="right-title-txt2">10</span>
+                    <span class="right-title-txt3">0%</span>
+                    <span class="right-title-txt4">
+                        <img src="../images/clock.png" class="clock-icon" /> 00:00:00
+                    </span>
+                    <div class="right-bar-graph">
+                        <p class="position:relative;">
+                            <span class="right-bar-gauge"></span>
+                        </p>
+                    </div>
+                </li>
+                <li class="right-spm"><span>0</span> [SPM]</li>
+                <li onclick="getStart();">
+                    <img src="../images/main_icon10.png" />
+                    <span class="right-title-txt">학 습</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="modal keyboard-num" id="numberKey">
+        <p class="keyboard-title" id="numKeyTitle"></p>
+        <div class="keyboard-input-box">
+            <input type="text" class="keyboard-input" id="numKeyInput" readonly />
+            <p class="keyboard-num-info">
+                Min/Max : <span id="numMin"></span> ~ <span id="numMax"></span>
+            </p>
+        </div>
+        <table cellspacing="0" cellpadding="0" border="0" class="keyboard-num-table" id="numKeyTable">
+            <tr>
+                <td><img src="../images/ICON_NUM7_OFF.png" name="7" /></td>
+                <td><img src="../images/ICON_NUM8_OFF.png" name="8" /></td>
+                <td><img src="../images/ICON_NUM9_OFF.png" name="9" /></td>
+            </tr>
+            <tr>
+                <td><img src="../images/ICON_NUM4_OFF.png" name="4" /></td>
+                <td><img src="../images/ICON_NUM5_OFF.png" name="5" /></td>
+                <td><img src="../images/ICON_NUM6_OFF.png" name="6" /></td>
+            </tr>
+            <tr>
+                <td><img src="../images/ICON_NUM1_OFF.png" name="1" /></td>
+                <td><img src="../images/ICON_NUM2_OFF.png" name="2" /></td>
+                <td><img src="../images/ICON_NUM3_OFF.png" name="3" /></td>
+            </tr>
+            <tr>
+                <td><img src="../images/ICON_O_OFF.png" name="0" /></td>
+                <td></td>
+                <td>
+                    <img src="../images/ICON_BACK_DELETE_OFF.png" name="backSpace" />
+                </td>
+            </tr>
+        </table>
+        <p class="keyboard-num-btn">
+            <img src="../images/OK_BUTTON_BACK.png" onclick="insertNum();" />
+            <img src="../images/CANCEL_BUTTON_BACK.png" onclick="closeModal();" />
+        </p>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/keyboard.js"></script>
+    <script src="../js/detail.js"></script>
+  </body>
+</html>

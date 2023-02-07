@@ -1,0 +1,305 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, maximum-scale=1">
+	<link rel="stylesheet" href="../css/jquery-ui.css" type="text/css" media="all" />
+	<link href="../css/common.css" rel="stylesheet" type="text/css">
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+	<script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="../js/chart.min.js"></script>
+	<script src="../js/common.js"></script>
+</head>
+<body>
+<div class="wrap bg-c0c0c0">
+	<div class="detail-content">
+		<div class="detail-top">
+			<ul class="monitoring-top-ul">
+				<li>
+					<img src="../images/MENU_BACK_ON.png">
+					<span class="monitor-top-title color-fff">모니터링</span>
+				</li>
+				<li>
+					<img src="../images/MENU_BACK_OFF.png">
+					<span class="monitor-top-title">패턴 검출</span>
+				</li>
+				<li>
+					<img src="../images/MENU_BACK_OFF.png">
+					<span class="monitor-top-title">고급 설정</span>
+				</li>
+				<li class="float-right">
+					<img src="../images/MENU_BACK_OFF.png">
+					<span class="monitor-top-title">절대값 보정</span>
+				</li>
+			</ul>
+			<div class="monitor-back">
+				<span class="page-name">모니터링</span>
+				<img src="../images/back_btn.png" onclick="historyBack();">
+			</div>
+		</div>
+	</div>
+	<div class="monitoring-con">
+		<table class="monitor-table" cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th></th>
+					<th>
+						<button class="monitor-btn" id="channel1" onclick="updateActive(1);">1 단</button>
+					</th>
+					<th>
+						<button class="monitor-btn" id="channel2" onclick="updateActive(2);">2 단</button>
+					</th>
+					<th>
+						<button class="monitor-btn" id="channel3" onclick="updateActive(3);">3 단</button>
+					</th>
+					<th>
+						<button class="monitor-btn" id="channel4" onclick="updateActive(4);">4 단</button>
+					</th>
+					<th>
+						<button class="monitor-btn" id="channel5" onclick="updateActive(5);">5 단</button>
+					</th>
+					<th>
+						<button class="monitor-btn" id="channel6" onclick="updateActive(6);">6 단</button>
+					</th>
+					<th>
+						<button class="monitor-btn" id="channel7" onclick="updateActive(7);">7 단</button>
+					</th>
+					<th>
+						<button class="monitor-btn" id="channel8" onclick="updateActive(8);">8 단</button>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="bg-A9">
+					<th class="monitor-table-th">불량검출법</th>
+					<td>
+						<button class="monitor-btn2" id="erDtc1" onclick="updateErdtc(1);">
+							추중오차<br>(Envelop)
+						</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="erDtc2" onclick="updateErdtc(2);">추중오차<br>(Envelop)</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="erDtc3" onclick="updateErdtc(3);">추중오차<br>(Envelop)</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="erDtc4" onclick="updateErdtc(4);">추중오차<br>(Envelop)</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="erDtc5" onclick="updateErdtc(5);">추중오차<br>(Envelop)</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="erDtc6" onclick="updateErdtc(6);">추중오차<br>(Envelop)</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="erDtc7" onclick="updateErdtc(7);">추중오차<br>(Envelop)</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="erDtc8" onclick="updateErdtc(8);">추중오차<br>(Envelop)</button>
+					</td>
+				</tr>
+				<tr class="bg-A9">
+					<th class="monitor-table-th">신호 표현</th>
+					<td>
+						<button class="monitor-btn2" id="signal1" onclick="updateSignal(1)">민감</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="signal2" onclick="updateSignal(2)">민감</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="signal3" onclick="updateSignal(3)">민감</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="signal4" onclick="updateSignal(4)">민감</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="signal5" onclick="updateSignal(5)">민감</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="signal6" onclick="updateSignal(6)">민감</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="signal7" onclick="updateSignal(7)">민감</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="signal8" onclick="updateSignal(8)">민감</button>
+					</td>
+				</tr>
+				<tr class="bg-A9">
+					<th class="monitor-table-th">자동 허용오차</th>
+					<td>
+						<button class="monitor-btn2" id="autoAble1" onclick="updateAutoable(1)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoAble2" onclick="updateAutoable(2)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoAble3" onclick="updateAutoable(3)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoAble4" onclick="updateAutoable(4)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoAble5" onclick="updateAutoable(5)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoAble6" onclick="updateAutoable(6)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoAble7" onclick="updateAutoable(7)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoAble8" onclick="updateAutoable(8)">미적용</button>
+					</td>
+				</tr>
+				<tr class="bg-A9">
+					<th class="monitor-table-th">영역 자동설정</th>
+					<td>
+						<button class="monitor-btn2" id="autoArea1" onclick="updateAutoarea(1)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoArea2" onclick="updateAutoarea(2)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoArea3" onclick="updateAutoarea(3)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoArea4" onclick="updateAutoarea(4)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoArea5" onclick="updateAutoarea(5)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoArea6" onclick="updateAutoarea(6)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoArea7" onclick="updateAutoarea(7)">미적용</button>
+					</td>
+					<td>
+						<button class="monitor-btn2" id="autoArea8" onclick="updateAutoarea(8)">미적용</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="footer">
+		<ul class="footer-ul">
+			<li>
+				<img src="../images/main_icon01.png">
+				<span class="footer-image-label">이력</span>
+			</li>
+			<li>
+				<img src="../images/MONITORING_BACK_ON.png">
+				<span class="footer-image-label color-185489">모니터링</span>
+			</li>
+			<li>
+				<img src="../images/main_icon03.png">
+				<span class="footer-image-label">금형</span>
+			</li>
+			<li>
+				<img src="../images/main_icon04.png">
+				<span class="footer-image-label">시스템</span>
+			</li>
+			<li class="footer-status-label">
+				<span class="footer-status-txt">
+					<span class="footer-status-txt1">INPUT</span>
+					<span class="footer-status-txt1">1</span>
+					<span class="footer-status-txt1">2</span>
+					<span class="footer-status-txt1">3</span>
+					<span class="footer-status-txt1">4</span>
+					<span class="footer-status-txt1">OUTPUT</span>
+					<span class="footer-status-txt1">1</span>
+					<span class="footer-status-txt1">2</span>
+					<span class="footer-status-txt1">3</span>
+					<span class="footer-status-txt1">4</span>
+				</span>
+			</li>
+		</ul>
+	</div>
+	<div class="right-menu">
+		<ul class="right-ul">
+			<li>
+				<img src="../images/main_icon05.png">
+				<span class="right-title-txt">압조력</span>
+			</li>
+			<li>
+				<img src="../images/main_icon06.png">
+				<span class="right-title-txt">피크</span>
+			</li>
+			<li>
+				<img src="../images/main_icon07.png">
+				<span class="right-title-txt">SPOP</span>
+			</li>
+			<li>
+				<img src="../images/main_icon08.png">
+				<span class="right-title-txt1">생산제품</span>
+				<span class="right-title-txt2">56,029</span>
+			</li>
+			<li>
+				<img src="../images/main_icon08.png">
+				<span class="right-title-txt1">제품생산량</span>
+				<span class="right-title-txt2">56,029</span>
+			</li>
+			<li>
+				<img src="../images/main_icon08.png">
+				<span class="right-title-txt1">일일생산량</span>
+				<span class="right-title-txt2">56,029</span>
+			</li>
+			<li>
+				<img src="../images/main_icon09.png">
+				<span class="right-title-txt1">생산목표</span>
+				<span class="right-title-txt2">10</span>
+				<span class="right-title-txt3">0%</span>
+				<span class="right-title-txt4">
+					<img src="../images/clock.png" class="clock-icon"> 00:00:00
+				</span>
+				<div class="right-bar-graph">
+					<p class="position:relative;">
+						<span class="right-bar-gauge"></span>
+					</p>
+				</div>
+			</li>
+			<li class="right-spm">
+				<span>0</span> [SPM]
+			</li>
+			<li>
+				<img src="../images/main_icon10.png">
+				<span class="right-title-txt">학 습</span>
+			</li>
+		</ul>
+	</div>
+	<!--
+	<div class="right-menu">
+		<div class="right-btn active-btn"><object data="../images/graph.svg" class="active-img" style="fill:white"></object><br>압조력</div>
+		<div class="right-btn"><img src="../images/graph.svg"><br>피크</div>
+		<div class="right-btn"><img src="../images/graph.svg"><br>SPOP</div>
+		<div class="right-btn2">
+			<p class="right-btn2-key">생산 제품</p>
+			<p class="right-btn2-value">1,233,123,123</p>
+		</div>
+		<div class="right-btn2">
+			<p class="right-btn2-key">제품 생산량</p>
+			<p class="right-btn2-value">1,233,123,123</p>
+		</div>
+		<div class="right-btn2">
+			<p class="right-btn2-key">일일 생산량</p>
+			<p class="right-btn2-value">1,233,123,123</p>
+		</div>
+		<div class="right-btn2">
+			<p class="right-btn2-key">생산 목표</p>
+			<p class="right-btn2-value">00:00:00</p>
+			<div class="right-bar-graph">
+				<div class="right-bar-value"></div>
+				<p class="right-bar-percent">30%</p>
+			</div>
+			<p class="right-bar-cnt">0</p>
+		</div>
+		<p class="right-spm">0 [SPM]</p>
+		<div class="right-btn" onclick="reload();"><img src="../images/idea.svg"><br>학습</div>
+	</div>
+	-->
+</div>
+
+
+<script src="../js/monitoring.js"></script>
+</body>
+</html>
