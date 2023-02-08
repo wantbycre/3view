@@ -17,6 +17,8 @@ p{
 }
 button{
 	padding:0;
+    border: 0;
+    vertical-align: middle;
 }
 .wrap{
 	width:1024px;
@@ -868,4 +870,109 @@ p.position-relative{
 	width:100%;
 	position:relative;
 	display:none;
+}
+
+/* 상연추가 */
+.peak-graph{
+    height: 309px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.peak-graph-detail{
+	width:869px;
+	height:265px;
+	margin-left:7px;
+	margin-bottom:7px;
+	background-color:#fff;
+}
+
+.peak-graph-content {
+    width: 100%;
+    height:200px;
+}
+
+.paek-modal{
+	width:400px;
+	height:180px;
+	background-color:#185489;
+	position:fixed;
+	top:50%;
+	left:50%;
+	z-index:100;
+	margin-left:-200px;
+	margin-top:-90px;
+	border:3px solid #f3f3f3;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	display:none;
+}
+
+.peak-modal-text{
+    height: 100px;
+    color: #185489;
+    text-align: center;
+    background-color: #98BEE0;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.paek-btn{
+	margin-top:10px;
+	text-align:center;
+}
+
+.paek-btn img:first-child{
+    margin-right: 20px;
+}
+
+.peak-graph-util {
+    margin-top: 35px;
+}
+
+.peak-graph-util ul{
+    overflow: hidden;
+}
+
+.peak-graph-util li {
+    float: left;
+    width: 265px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 15px;
+    border: 1px solid #D2D2D2;
+    color: #494A4E
+}
+
+.peak-graph-util li:first-child {
+    width: 253px;
+    padding-left: 10px;
+}
+
+.peak-graph-util-wid1 {
+    display: inline-block;
+    width: 70px;
+}
+
+.peak-graph-util-wid2 {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    color: #395D81;
+}
+
+.btn-peak {
+    width: 125px;
+    height: 40px;
+    line-height: 40px;
+    background: url(../images/peak_button_box.png) no-repeat;
+    text-align: left;
+    vertical-align: top;
+}
+
+.btn-peak img{
+    margin: 0 12px 0 10px;
+    vertical-align: middle;
 }

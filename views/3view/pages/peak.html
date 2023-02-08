@@ -29,58 +29,52 @@
                 </ul>
             </div>
             <div class="peak-graph">
-                <div class="peak-graph-content">
+                <div class="peak-graph-content" style="border: 1px solid #000;">
                     여기 그래프 width:869px;height:?
                 </div>
                 <div class="peak-graph-util">
                     <ul>
                         <li>
-                            시간 범위
+                            <div class="peak-graph-util-wid1">시간 범위</div>
+                            <button type="button"><img src="../images/left_arrow_small.png" alt=""></button>
+                            <div class="peak-graph-util-wid2">
+                                <span>1</span>시간
+                            </div>
+                            <button type="button"><img src="../images/right_arrow_small.png" alt=""></button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-peak">
+                                <img src="../images/peak_stop_off_24.png" alt="">
+                                피크 최소
+                            </button>
+                            <div>29000</div>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-peak">
+                                <img src="../images/peak_stop_off_24.png" alt="">
+                                피크 최대
+                            </button>
+                            <div>29000</div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="peak-graph-detail">
-            `1
+            <!-- <button type="button" id="handlePeakMin" data-text="압조력 피크(Peak) 최소값 모니티링을 적용 합니다.<br />적용 하시겠습니까?">피크 최소</button>             -->
+            
         </div>
         <div class="footer"></div>
         <div class="right-menu"></div>
     </div>
-    <div class="modal keyboard-num" id="numberKey">
-        <p class="keyboard-title" id="numKeyTitle"></p>
-        <div class="keyboard-input-box">
-            <input type="text" class="keyboard-input" id="numKeyInput" readonly />
-            <p class="keyboard-num-info">
-                Min/Max : <span id="numMin"></span> ~ <span id="numMax"></span>
-            </p>
+
+    <div class="modal paek-modal" id="peakModal">
+        <p class="keyboard-title" id="numKeyTitle">알 림 : 0x1200</p>
+        <div class="peak-modal-text">
+            
         </div>
-        <table cellspacing="0" cellpadding="0" border="0" class="keyboard-num-table" id="numKeyTable">
-            <tr>
-                <td><img src="../images/ICON_NUM7_OFF.png" name="7" /></td>
-                <td><img src="../images/ICON_NUM8_OFF.png" name="8" /></td>
-                <td><img src="../images/ICON_NUM9_OFF.png" name="9" /></td>
-            </tr>
-            <tr>
-                <td><img src="../images/ICON_NUM4_OFF.png" name="4" /></td>
-                <td><img src="../images/ICON_NUM5_OFF.png" name="5" /></td>
-                <td><img src="../images/ICON_NUM6_OFF.png" name="6" /></td>
-            </tr>
-            <tr>
-                <td><img src="../images/ICON_NUM1_OFF.png" name="1" /></td>
-                <td><img src="../images/ICON_NUM2_OFF.png" name="2" /></td>
-                <td><img src="../images/ICON_NUM3_OFF.png" name="3" /></td>
-            </tr>
-            <tr>
-                <td><img src="../images/ICON_O_OFF.png" name="0" /></td>
-                <td></td>
-                <td>
-                    <img src="../images/ICON_BACK_DELETE_OFF.png" name="backSpace" />
-                </td>
-            </tr>
-        </table>
-        <p class="keyboard-num-btn">
-            <img src="../images/OK_BUTTON_BACK.png" onclick="insertNum();" />
+        <p class="paek-btn">
+            <img src="../images/OK_BUTTON_BACK.png"  />
             <img src="../images/CANCEL_BUTTON_BACK.png" onclick="closeModal();" />
         </p>
     </div>
@@ -92,5 +86,18 @@
     <script src="../js/common.js"></script>
     <script src="../js/keyboard.js"></script>
     <script src="../js/detail.js"></script>
+    
+    <!-- 상연 작업 -->
+    <script>
+        // 팝업
+        $(document).on("click", "#handlePeakMin", function(){
+            $("#peakModal").fadeIn(200);
+            $(".peak-modal-text").html($(this).data("text"));
+        });
+        // 팝업 닫기
+        function closeModal(){
+            $("#peakModal").fadeOut(200);
+        }
+    </script>
   </body>
 </html>
